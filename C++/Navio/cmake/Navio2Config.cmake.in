@@ -1,0 +1,18 @@
+# - Config file for the Navio2 package
+# It defines the following variables
+#  Navio2_INCLUDE_DIRS - include directories for Navio2
+#  Navio2_LIBRARIES    - libraries to link against
+#  Navio2_EXECUTABLE   - the bar executable
+
+# Compute paths
+get_filename_component(Navio2_CMAKE_DIR "${CMAKE_CURRENT_LIST_FILE}" PATH)
+set(Navio2_INCLUDE_DIRS "@CONF_INCLUDE_DIRS@")
+
+# Our library dependencies (contains definitions for IMPORTED targets)
+if(NOT TARGET Navio2 AND NOT Navio2_BINARY_DIR)
+  include("${Navio2_CMAKE_DIR}/Navio2Targets.cmake")
+endif()
+
+# These are IMPORTED targets created by Navio2Targets.cmake
+set(Navio2_LIBRARIES Navio2)
+
